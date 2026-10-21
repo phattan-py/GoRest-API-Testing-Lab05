@@ -1,0 +1,30 @@
+name: API Shift-Right Monitor
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Chạy tự động mỗi giờ
+  workflow_dispatch:     # Cho phép bấm chạy thủ công trên giao diện
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Health Check & Performance Monitor
+        run: |
+          newman run "Collection.json" \
+            -e "Environment.json" \
+            --env-var "token=${{ secrets.GOREST_TOKEN }}" \
+            --folder "Positive_Cases"
+```[cite: 3]
