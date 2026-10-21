@@ -2,8 +2,8 @@ name: API Shift-Right Monitor
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Chạy tự động mỗi giờ
-  workflow_dispatch:     # Cho phép bấm chạy thủ công trên giao diện
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   monitor:
@@ -22,9 +22,4 @@ jobs:
         run: npm install -g newman
 
       - name: Run Health Check & Performance Monitor
-        run: |
-          newman run "Collection.json" \
-            -e "Environment.json" \
-            --env-var "token=${{ secrets.GOREST_TOKEN }}" \
-            --folder "Positive_Cases"
-```[cite: 3]
+        run: newman run Collection.json -e Environment.json --env-var "token=${{ secrets.GOREST_TOKEN }}" --folder "Positive_Cases"
