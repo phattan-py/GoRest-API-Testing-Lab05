@@ -1,0 +1,22 @@
+{
+	"id": "546988a4-d388-4abf-a96d-38abbc3c3a14",
+	"name": "2474802010292_DangTanPhat_GoRest ENV",
+	"values": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-10-21T10:20:58.172Z",
+	"_postman_exported_using": "Postman/12.33.2-261021-0231"
+}
