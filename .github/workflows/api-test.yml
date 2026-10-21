@@ -3,6 +3,7 @@ name: Automated API Tests with Newman
 on:
   push:
     branches: [ "main", "master" ]
+  workflow_dispatch:
 
 jobs:
   test-api:
@@ -21,9 +22,4 @@ jobs:
         run: npm install -g newman
 
       - name: Run Postman Collection with Data-Driven
-        run: |
-          newman run "Collection.json" \
-            -e "Environment.json" \
-            -d "users.csv" \
-            --env-var "token=${{ secrets.GOREST_TOKEN }}"
-```[cite: 3]
+        run: newman run Collection.json -e Environment.json -d users.csv --env-var "token=${{ secrets.GOREST_TOKEN }}"
